@@ -1,0 +1,19 @@
+{
+    "hello" : "Hello!",
+    "russian" : "Russian",
+    "english" : "English",
+    "thisApplicationWillHelpYouAndRemindYou" : "This application will help you and remind you of the habits that you need to do during the day.",
+    "habits" : "Habits",
+    "youCanAddManyHabitsAndTheApplication" : "You can add many habits and the application will help you not to forget about them",
+    "plans" : "Plans",
+    "youCanPlanFutureHabits" : "You can plan future habits",
+    "statistics" : "Statistics",
+    "keepTrackOfYourStatistics" : "Keep track of your statistics",
+    "stories" : "Stories",
+    "shareYourAchievementsInTheHistorySection" : "Share your achievements in the history section",
+    "start" : "Start",
+    "wellAreYouReady" : "Well, are you ready? Let's get started 😃",
+    "next" : "Next",
+    "getStarted" : "Get started",
+    "settings" : "Settings"
+}
