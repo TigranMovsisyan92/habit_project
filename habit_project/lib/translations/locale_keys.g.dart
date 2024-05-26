@@ -18,5 +18,8 @@ abstract class  LocaleKeys {
   static const next = 'next';
   static const getStarted = 'getStarted';
   static const settings = 'settings';
+  static const newPlan = 'newPlan';
+  static const icon = 'icon';
+  static const createPlan = 'createPlan';
 
 }

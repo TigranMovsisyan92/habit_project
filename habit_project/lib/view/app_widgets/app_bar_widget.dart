@@ -51,6 +51,6 @@ class AppBarWidget extends StatelessWidget {
           color: Colors.transparent,
         ),
       ],
-    ).paddingOnly(top: 10);
+    ).paddingOnly(top: 10, left: 20, right: 20);
   }
 }

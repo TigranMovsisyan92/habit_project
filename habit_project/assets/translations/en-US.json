@@ -15,5 +15,8 @@
     "wellAreYouReady" : "Well, are you ready? Let's get started 😃",
     "next" : "Next",
     "getStarted" : "Get started",
-    "settings" : "Settings"
+    "settings" : "Settings",
+    "newPlan" : "New Plan",
+    "icon" : "Icon",
+    "createPlan" : "Create plan"
 }

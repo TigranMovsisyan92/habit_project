@@ -31,7 +31,10 @@ class CodegenLoader extends AssetLoader{
   "wellAreYouReady": "Ну что готовы? Начнем 😃",
   "next": "Далее",
   "getStarted": "Начать",
-  "settings": "Настройки"
+  "settings": "Настройки",
+  "newPlan": "Новый план",
+  "icon": "Иконка",
+  "createPlan": "Создать план"
 };
 static const Map<String,dynamic> en_US = {
   "hello": "Hello!",
@@ -50,7 +53,10 @@ static const Map<String,dynamic> en_US = {
   "wellAreYouReady": "Well, are you ready? Let's get started 😃",
   "next": "Next",
   "getStarted": "Get started",
-  "settings": "Settings"
+  "settings": "Settings",
+  "newPlan": "New Plan",
+  "icon": "Icon",
+  "createPlan": "Create plan"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ru_RU": ru_RU, "en_US": en_US};
 }

@@ -118,7 +118,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
           AppButton(
             onTap: () {
               if (index == 5) {
-                context.go('/mainPage');
+                context.pushReplacement('/mainPage');
               } else {
                 _controller.nextPage(
                   duration: const Duration(milliseconds: 500),

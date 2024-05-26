@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:habit_project/view/main_page/main_page.dart';
 import 'package:habit_project/view/onboarding/onboarding_page.dart';
+import 'package:habit_project/view/plans_page/add_new_plan_page.dart';
 
 class AppNavigationRoutes {
   final BuildContext context;
@@ -12,6 +13,7 @@ class AppNavigationRoutes {
   });
 
   final GoRouter router = GoRouter(
+    initialLocation: '/mainPage',
     routes: <RouteBase>[
       GoRoute(
         path: '/',
@@ -21,8 +23,16 @@ class AppNavigationRoutes {
       ),
       GoRoute(
         path: '/mainPage',
+        name: '/mainPage',
         builder: (BuildContext context, GoRouterState state) {
           return const MainPage();
+        },
+      ),
+      GoRoute(
+        path: '/addNewPlan',
+        name: '/addNewPlan',
+        builder: (BuildContext context, GoRouterState state) {
+          return const AddNewPlanPage();
         },
       ),
     ],

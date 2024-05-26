@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:habit_project/framwork/bloc/plan_bloc/plan_bloc.dart';
 import 'package:habit_project/framwork/features/routes.dart';
 import 'package:habit_project/framwork/service/logger.dart';
 import 'package:habit_project/framwork/service/storage_service.dart';
@@ -33,14 +35,28 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: AppNavigationRoutes(context: context).router,
-      debugShowCheckedModeBanner: false,
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      title: 'Habit Project',
-      theme: Provider.of<ThemeProvider>(context).themeData,
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => PlanBloc(),
+            ),
+          ],
+          child: MaterialApp.router(
+            routerConfig: AppNavigationRoutes(context: context).router,
+            debugShowCheckedModeBanner: false,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
+            title: 'Habit Project',
+            theme: Provider.of<ThemeProvider>(context).themeData,
+          ),
+        );
+      },
     );
   }
 }
