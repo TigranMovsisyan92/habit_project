@@ -18,5 +18,9 @@
     "settings" : "Settings",
     "newPlan" : "New Plan",
     "icon" : "Icon",
-    "createPlan" : "Create plan"
+    "createPlan" : "Create plan",
+    "editPlan" : "Edit plan",
+    "addHabit" : "Add a habit",
+    "edit" : "Edit",
+    "delete" : "Delete"
 }

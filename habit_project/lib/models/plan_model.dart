@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 class PlanModel {
-  final int? id;
-  final String? name;
-  final String? emoji;
-  final String? emojiName;
+  int? id;
+  String? name;
+  String? emoji;
+  String? emojiName;
 
   PlanModel({
     this.id,

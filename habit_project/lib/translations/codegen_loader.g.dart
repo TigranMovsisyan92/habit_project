@@ -34,7 +34,11 @@ class CodegenLoader extends AssetLoader{
   "settings": "Настройки",
   "newPlan": "Новый план",
   "icon": "Иконка",
-  "createPlan": "Создать план"
+  "createPlan": "Создать план",
+  "editPlan": "Редактировать план",
+  "addHabit": "Добавить привычку",
+  "edit": "Редактировать",
+  "delete": "Удалить"
 };
 static const Map<String,dynamic> en_US = {
   "hello": "Hello!",
@@ -56,7 +60,11 @@ static const Map<String,dynamic> en_US = {
   "settings": "Settings",
   "newPlan": "New Plan",
   "icon": "Icon",
-  "createPlan": "Create plan"
+  "createPlan": "Create plan",
+  "editPlan": "Edit plan",
+  "addHabit": "Add a habit",
+  "edit": "Edit",
+  "delete": "Delete"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ru_RU": ru_RU, "en_US": en_US};
 }

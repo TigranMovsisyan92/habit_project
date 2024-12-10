@@ -12,9 +12,15 @@ class PlanBloc extends Bloc<PlanEvent, PlanState> {
     on<AddNewPlanEvent>(_addNewPlan);
     on<UpdatePlanEvent>(_updatePlan);
     on<DeletePlanEvent>(_deletePlan);
+    on<SelectedPlanEvent>(_selectedPlan);
   }
   final PlansTable _plansTable = PlansTable();
+  bool stateIsEditPlan = false;
   // List<PlanModel> _plans = [];
+
+  void changeStateIsEditPlan(bool value) {
+    stateIsEditPlan = value;
+  }
 
   void _openOrCloseEmoji(OpenOrCloseEmojiEvent event, Emitter<PlanState> emit) {
     emit(state.copyWith(isExpanded: !state.isExpanded));
@@ -40,5 +46,9 @@ class PlanBloc extends Bloc<PlanEvent, PlanState> {
 
   Future<void> _deletePlan(DeletePlanEvent event, Emitter<PlanState> emit) async {
     await _plansTable.deletePlan(event.id);
+  }
+
+  void _selectedPlan(SelectedPlanEvent event, Emitter<PlanState> emit) {
+    emit(state.copyWith(selectedPlan: event.plan));
   }
 }

@@ -40,3 +40,11 @@ class DeletePlanEvent extends PlanEvent {
     required this.id,
   });
 }
+
+class SelectedPlanEvent extends PlanEvent {
+  final PlanModel plan;
+
+  SelectedPlanEvent({
+    required this.plan,
+  });
+}

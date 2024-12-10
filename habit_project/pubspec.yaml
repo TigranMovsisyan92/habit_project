@@ -49,6 +49,7 @@ dependencies:
   emoji_picker_flutter: ^2.2.0
   path: ^1.9.0
   flutter_screenutil: ^5.9.1
+  uuid: ^4.4.0
 
 dev_dependencies:
   flutter_test:

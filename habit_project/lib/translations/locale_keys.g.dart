@@ -21,5 +21,9 @@ abstract class  LocaleKeys {
   static const newPlan = 'newPlan';
   static const icon = 'icon';
   static const createPlan = 'createPlan';
+  static const editPlan = 'editPlan';
+  static const addHabit = 'addHabit';
+  static const edit = 'edit';
+  static const delete = 'delete';
 
 }

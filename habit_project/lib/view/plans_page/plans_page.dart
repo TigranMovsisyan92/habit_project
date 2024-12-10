@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:habit_project/framwork/bloc/plan_bloc/plan_bloc.dart';
 import 'package:habit_project/framwork/bloc/plan_bloc/plan_event.dart';
 import 'package:habit_project/framwork/bloc/plan_bloc/plan_state.dart';
+import 'package:habit_project/models/plan_model.dart';
 import 'package:habit_project/theme/theme.dart';
 import 'package:habit_project/theme/theme_provider.dart';
 import 'package:habit_project/translations/locale_keys.g.dart';
@@ -55,7 +56,20 @@ class _PlansPageState extends State<PlansPage> {
                       final plan = state.plans?[index];
                       return PlanWidget(
                         plan: plan,
-                        color: Provider.of<ThemeProvider>(context).themeData == lightMode ? Colors.white : Colors.grey.shade400,
+                        color: Provider.of<ThemeProvider>(context).themeData ==
+                                lightMode
+                            ? Colors.white
+                            : Colors.grey.shade400,
+                        addHabitOnTap: () {},
+                        editOnTap: () {
+                          _bloc.add(SelectedPlanEvent(plan: plan ?? PlanModel()));
+                          _bloc.changeStateIsEditPlan(true);
+                          context.pushNamed('/addNewPlan');
+                        },
+                        deleteOnTap: () {
+                          _bloc.add(DeletePlanEvent(id: plan!.id!));
+                          _bloc.add(LoadPlansEvent());
+                        },
                       );
                     },
                   ),
@@ -65,6 +79,8 @@ class _PlansPageState extends State<PlansPage> {
           },
         ),
         FloatingButton(onTap: () {
+          _bloc.changeStateIsEditPlan(false);
+          _bloc.add(SelectedPlanEvent(plan: PlanModel()));
           context.pushNamed('/addNewPlan');
         }),
       ],

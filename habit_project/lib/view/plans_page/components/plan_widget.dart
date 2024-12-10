@@ -1,13 +1,25 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:habit_project/core/extensions/widget_extensions.dart';
 import 'package:habit_project/models/plan_model.dart';
+import 'package:habit_project/translations/locale_keys.g.dart';
 
 class PlanWidget extends StatelessWidget {
-  const PlanWidget({super.key, required this.plan, this.color,});
+  const PlanWidget({
+    super.key,
+    required this.plan,
+    this.color,
+    required this.addHabitOnTap,
+    required this.editOnTap,
+    required this.deleteOnTap,
+  });
 
   final PlanModel? plan;
   final Color? color;
+  final VoidCallback addHabitOnTap;
+  final VoidCallback editOnTap;
+  final VoidCallback deleteOnTap;
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +31,35 @@ class PlanWidget extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Text(plan?.emoji ?? '', style: const TextStyle(
-            fontSize: 48
-          ),).paddingLTRB(10, 12, 10, 12),
-          Text(plan?.name ?? '', style: GoogleFonts.ubuntu(
-            fontSize: 18,
-            fontWeight: FontWeight.w700
-          ),).paddingOnly(left: 10),
+          Text(
+            plan?.emoji ?? '',
+            style: const TextStyle(fontSize: 48),
+          ).paddingLTRB(10, 12, 10, 12),
+          Text(
+            plan?.name ?? '',
+            style:
+                GoogleFonts.ubuntu(fontSize: 18, fontWeight: FontWeight.w700),
+          ).paddingOnly(left: 10),
           const Spacer(),
-          // PopupMenuButton(itemBuilder: (context) {
-          
-          // },)
+          PopupMenuButton(
+            icon: const Icon(Icons.more_vert),
+            itemBuilder: (context) {
+              return <PopupMenuEntry<String>>[
+                PopupMenuItem(
+                  onTap: addHabitOnTap,
+                  child: Text(LocaleKeys.addHabit.tr()),
+                ),
+                PopupMenuItem(
+                  onTap: editOnTap,
+                  child: Text(LocaleKeys.edit.tr()),
+                ),
+                PopupMenuItem(
+                  onTap: deleteOnTap,
+                  child: Text(LocaleKeys.delete.tr()),
+                ),
+              ];
+            },
+          )
         ],
       ),
     );

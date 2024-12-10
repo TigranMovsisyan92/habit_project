@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:habit_project/constants/app_colors.dart';
 import 'package:habit_project/core/extensions/widget_extensions.dart';
+import 'package:habit_project/models/plan_model.dart';
 import 'package:habit_project/translations/locale_keys.g.dart';
 
 class EmojiPickerWidget extends StatelessWidget {
@@ -15,12 +16,14 @@ class EmojiPickerWidget extends StatelessWidget {
     required this.onPressed,
     required this.onEmojiSelected,
     this.emoji,
+    this.plan,
   });
 
   final bool isExpanded;
   final Function(bool) onPressed;
   final Function(Category?, Emoji) onEmojiSelected;
   final Emoji? emoji;
+  final PlanModel? plan;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +40,7 @@ class EmojiPickerWidget extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Text(emoji?.emoji ?? '🙂', style: const TextStyle(
+            Text(plan?.emoji != null ? plan!.emoji! : emoji?.emoji ?? '🙂', style: const TextStyle(
               fontSize: 48,
             ),),
             Column(
@@ -50,9 +53,9 @@ class EmojiPickerWidget extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                   ),
                 ),
-                if (emoji != null)
+                if (emoji != null || plan?.emojiName != null)
                   Text(
-                    emoji?.name ?? '',
+                    plan?.emojiName != null ? plan!.emojiName! : emoji?.name ?? '',
                     style: GoogleFonts.ubuntu(
                       fontSize: 17,
                       fontWeight: FontWeight.w400,
@@ -85,7 +88,7 @@ class EmojiPickerWidget extends StatelessWidget {
           children: [
             Row(
               children: [
-                Text(emoji?.emoji ?? '🙂', style: const TextStyle(
+                Text(plan?.emoji != null ? plan!.emoji! : emoji?.emoji ?? '🙂', style: const TextStyle(
                   fontSize: 48,
                 ),),
                 Column(
@@ -98,9 +101,9 @@ class EmojiPickerWidget extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    if (emoji != null)
+                    if (emoji != null || plan?.emojiName != null)
                       Text(
-                        emoji?.name ?? '',
+                        plan?.emojiName != null ? plan!.emojiName! : emoji?.name ?? '',
                         style: GoogleFonts.ubuntu(
                           fontSize: 17,
                           fontWeight: FontWeight.w400,

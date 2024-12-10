@@ -30,6 +30,7 @@ class _AddNewPlanPageState extends State<AddNewPlanPage> {
   void initState() {
     super.initState();
     _bloc = context.read<PlanBloc>();
+    _stateEdit();
   }
 
   @override
@@ -63,24 +64,39 @@ class _AddNewPlanPageState extends State<AddNewPlanPage> {
               EmojiPickerWidget(
                 isExpanded: state.isExpanded,
                 emoji: state.selectedEmoji,
+                plan: state.selectedPlan,
                 onPressed: (_) {
                   _bloc.add(OpenOrCloseEmojiEvent());
                 },
                 onEmojiSelected: (_, emoji) {
                   _bloc.add(SelectEmojiEvent(emoji: emoji));
+                  if(_bloc.stateIsEditPlan) {
+                    state.selectedPlan?.emoji = emoji.emoji;
+                    state.selectedPlan?.emojiName = emoji.name;
+                  }
                 },
               ),
               const Spacer(),
               AppButton(
                 onTap: () {
-                  _bloc.add(AddNewPlanEvent(plan: PlanModel(
+                  if(_bloc.stateIsEditPlan) {
+                    _bloc.add(UpdatePlanEvent(plan: PlanModel(
+                    id: state.selectedPlan?.id,
+                    name: _controller.text,
+                    emoji: state.selectedEmoji?.emoji ?? _bloc.state.selectedPlan?.emoji,
+                    emojiName: state.selectedEmoji?.name ?? _bloc.state.selectedPlan?.emojiName,
+                  )));
+                  } else {
+                    _bloc.add(AddNewPlanEvent(plan: PlanModel(
                     name: _controller.text,
                     emoji: state.selectedEmoji?.emoji,
+                    emojiName: state.selectedEmoji?.name,
                   )));
+                  }
                   _bloc.add(LoadPlansEvent());
                   context.pop();
                 },
-                title: LocaleKeys.createPlan.tr(),
+                title: _bloc.stateIsEditPlan ? LocaleKeys.editPlan.tr() : LocaleKeys.createPlan.tr(),
                 color: AppColors.appColor,
                 titleColor: Colors.white,
               ).paddingLTRB(20, 0, 20, 30),
@@ -89,5 +105,11 @@ class _AddNewPlanPageState extends State<AddNewPlanPage> {
         },
       ),
     );
+  }
+
+  void _stateEdit() {
+    if(_bloc.stateIsEditPlan) {
+      _controller.text = _bloc.state.selectedPlan?.name ?? '';
+    }
   }
 }
